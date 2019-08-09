@@ -5,7 +5,7 @@
         <v-textarea
           v-model="proxylist"
           label="IPS PROXY"
-          placeholder="Introduce los proxys separado por saltos de linea"
+          placeholder="Put proxy with line break format"
           @onpaste="countProxy()"
           @oncut="countProxy()"
           @keyup="countProxy()"
@@ -89,7 +89,7 @@ export default {
         .split("\n")
         .map(x => x.trim())
         .filter(x => x !== "");
-      const arraypart = this.partition(proxylistCopia, 50);
+      const arraypart = this.partition(proxylistCopia, 500);
       this.validos = [];
       this.novalidos = [];
       this.packs = arraypart.length;
@@ -107,9 +107,9 @@ export default {
           );
           this.validos = [...this.validos, ...response.data.ok];
           this.novalidos = [...this.novalidos, ...response.data.ko];
-          console.log(this.packs + " ha terminado...");
+          console.log(this.packs + " Finished.");
         } catch (error) {
-          console.log("algo va mal... primo");
+          console.log("There is something wrong here..");
           console.log(error);
         }
       }
@@ -145,11 +145,9 @@ export default {
         })
       ])
         .then(response => {
-          console.log("ha funcionado primo");
           console.log(response);
         })
         .catch(error => {
-          console.log("algo falla primo");
           console.log(error);
         });
     },
@@ -164,12 +162,12 @@ export default {
       }
       console.log(a);
       this.proxylist = a;
-      alert("IPS PROXYS ACTUALIZADO");
+      alert("PROXY IP UPDATED!!");
     },
     countProxy() {
       const cantidad = this.proxylist.split("\n").filter(x => x !== "").length;
       if (cantidad > 10000) {
-        alert("Muchos proxy!!! poco a poco porfavor!!");
+        alert("MAX 10000, array sliced until 9999)");
         this.proxylist = this.proxylist.slice(0, 10000);
         this.proxylistlength = 10000;
       } else this.proxylistlength = cantidad;
