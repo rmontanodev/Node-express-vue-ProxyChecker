@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title></title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+    <script>
+      $(document).ready(function(){
+        var proxy;
+        $("#submit").click(() => {
+
+          $("#submit").prop("disabled",true)
+          proxy=$("#proxy").val();
+          $.post("http://localhost:3000/login",{proxy: proxy}, (data) => {
+            console.log(data)
+            $("#submit").prop("disabled",false)
+
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Proxy Tester !</h1>
+    <form action="#">
+        <label> Pon Proxy IP:Puerto</label><br>
+        <input type="TEXT" id="proxy" size="40"><br>
+        <input type="button" id="submit" value="Submit"></form>
+  </body>
+</html>
