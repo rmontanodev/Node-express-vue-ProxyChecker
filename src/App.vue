@@ -2,7 +2,7 @@
   <v-app>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Anpro21</span>
+        <span>Proxy Checker</span>
         <span class="font-weight-light">Proxy Tester</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
